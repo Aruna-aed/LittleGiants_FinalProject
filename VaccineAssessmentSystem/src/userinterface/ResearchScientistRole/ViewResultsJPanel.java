@@ -42,6 +42,7 @@ public class ViewResultsJPanel extends javax.swing.JPanel {
     }
 public void populateTable(){
       DefaultTableModel model = (DefaultTableModel) ResultsJTable.getModel();
+      Enterprise e1=this.enterprise;
       model.setRowCount(0); 
       Object[] row = new Object[7];
        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
@@ -52,7 +53,9 @@ public void populateTable(){
                    -> (organization.getName().equals("Visitor Organization"))).forEachOrdered((organization) -> {
                
              for (Visitor v: organization.getVisitorDirectory().getVisitorList()) {
-                 
+                try{
+                 if(v.getSelectedBy().equals(e1.getName()))
+                 {
                  
                  Phase phase1 = v.searchPhase("Phase1");
                  Phase phase2 = v.searchPhase("Phase2");
@@ -89,7 +92,10 @@ public void populateTable(){
              }
              catch(Exception e){
                      
-                     }}
+                     }}}
+             catch(Exception e ){
+                 
+             }}
            });
           }}
           }
@@ -172,6 +178,58 @@ public void populateTable(){
                 .addGap(91, 91, 91))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public int getFailedCount(){
+ Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
+ Enterprise e1=this.enterprise;
+  int failedCount=0;
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getEnterpriseType() == type) {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization.getName().equals("Visitor Organization")) {
+
+                            for (Visitor v : organization.getVisitorDirectory().getVisitorList()) {
+                                try {
+                                    if (v.getResearchStatus().equals("failed") && v.isVolunteer() == true && v.getSelectedBy().equals(e1.getName())) {
+                                        failedCount = failedCount + 1;
+                                    }
+                                } catch (Exception e) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        return failedCount;}
+    
+        public int getVolunteerCount(){
+ Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
+ Enterprise e1=this.enterprise;
+  int volunteerCount=0;
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getEnterpriseType() == type) {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization.getName().equals("Visitor Organization")) {
+
+                            for (Visitor v : organization.getVisitorDirectory().getVisitorList()) {
+                                try {
+                                    if ( v.isVolunteer() == true && v.getSelectedBy().equals(e1.getName())) {
+                                        volunteerCount = volunteerCount + 1;
+                                    }
+                                } catch (Exception e) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        return volunteerCount;}
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
 
