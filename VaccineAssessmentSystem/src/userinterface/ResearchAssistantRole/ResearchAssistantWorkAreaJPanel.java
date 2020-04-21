@@ -74,7 +74,7 @@ public class ResearchAssistantWorkAreaJPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 690, 200, 160));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 200, 160));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 204));
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

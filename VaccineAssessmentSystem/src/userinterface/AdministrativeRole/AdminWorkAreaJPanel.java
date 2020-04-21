@@ -59,7 +59,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 147, 150, -1));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 150, 150, -1));
 
         manageEmployeeJButton.setBackground(new java.awt.Color(88, 177, 159));
         manageEmployeeJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
