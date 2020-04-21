@@ -110,6 +110,7 @@ public class Phase2JPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         processJButton.setBackground(new java.awt.Color(88, 177, 159));
+        processJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +184,7 @@ public class Phase2JPanel extends javax.swing.JPanel {
         );
 
         jButton2.setBackground(new java.awt.Color(88, 177, 159));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Request Antibodies Count");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +260,7 @@ public class Phase2JPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(744, Short.MAX_VALUE))
+                .addContainerGap(742, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

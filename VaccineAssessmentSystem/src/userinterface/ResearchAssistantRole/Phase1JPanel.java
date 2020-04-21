@@ -111,6 +111,7 @@ public class Phase1JPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         processJButton.setBackground(new java.awt.Color(88, 177, 159));
+        processJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +188,7 @@ public class Phase1JPanel extends javax.swing.JPanel {
         );
 
         jButton2.setBackground(new java.awt.Color(88, 177, 159));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Request Antibodies Count");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

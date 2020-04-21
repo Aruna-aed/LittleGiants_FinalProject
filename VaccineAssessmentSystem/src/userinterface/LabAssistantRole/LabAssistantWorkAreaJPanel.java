@@ -133,22 +133,24 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 1280, 96));
 
         assignJButton.setBackground(new java.awt.Color(88, 177, 159));
+        assignJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignJButtonActionPerformed(evt);
             }
         });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1131, 210, 120, -1));
 
         processJButton.setBackground(new java.awt.Color(88, 177, 159));
+        processJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 220, 90, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 210, 100, -1));
 
         refreshJButton.setBackground(new java.awt.Color(255, 255, 255));
         refreshJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/Images/Actions-view-refresh-icon.png"))); // NOI18N
@@ -157,7 +159,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 30, 30));
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 60, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
