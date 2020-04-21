@@ -411,7 +411,7 @@ void populateDropdownTestName(){
                     .addGroup(layout.createSequentialGroup()
                         .addGap(370, 370, 370)
                         .addComponent(jButton3)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -180,7 +180,7 @@ public void populateTable(){
                 .addGap(32, 32, 32))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(393, Short.MAX_VALUE)
+                    .addContainerGap(1212, Short.MAX_VALUE)
                     .addComponent(pieButton)
                     .addGap(335, 335, 335)))
         );
@@ -196,7 +196,7 @@ public void populateTable(){
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(242, Short.MAX_VALUE)
+                    .addContainerGap(1422, Short.MAX_VALUE)
                     .addComponent(pieButton)
                     .addGap(81, 81, 81)))
         );

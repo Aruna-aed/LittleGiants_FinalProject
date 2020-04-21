@@ -30,7 +30,7 @@
                       <Component id="refreshJButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="177" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" min="-2" pref="1338" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -42,7 +42,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="313" max="32767" attributes="0"/>
+              <EmptySpace pref="217" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="616" max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="798" max="32767" attributes="0"/>
+              <EmptySpace pref="756" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

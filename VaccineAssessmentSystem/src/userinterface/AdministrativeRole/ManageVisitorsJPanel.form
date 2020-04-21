@@ -99,7 +99,7 @@
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="853" max="32767" attributes="0"/>
+              <EmptySpace pref="687" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -148,7 +148,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                       <Component id="emailTextField" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="106" max="-2" attributes="0"/>
@@ -175,7 +175,7 @@
                   </Group>
                   <Component id="emergencyContactNumTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="703" max="32767" attributes="0"/>
+              <EmptySpace pref="702" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

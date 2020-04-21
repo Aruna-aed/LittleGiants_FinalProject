@@ -214,7 +214,7 @@ public void populateTable(){
                     .addGroup(layout.createSequentialGroup()
                         .addGap(522, 522, 522)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(735, Short.MAX_VALUE))
+                .addContainerGap(543, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,7 +231,7 @@ public void populateTable(){
                     .addComponent(jButton2))
                 .addGap(106, 106, 106)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(997, Short.MAX_VALUE))
+                .addContainerGap(955, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

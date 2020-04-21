@@ -232,7 +232,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(298, 298, 298)
                         .addComponent(submitJButton)))
-                .addContainerGap(1102, Short.MAX_VALUE))
+                .addContainerGap(895, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

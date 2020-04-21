@@ -78,6 +78,7 @@ catch(IOException e)
 
         setPreferredSize(new java.awt.Dimension(1600, 1600));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 1600));
 
         jButton1.setText(" X");
@@ -87,6 +88,8 @@ catch(IOException e)
             }
         });
 
+        ImageLabel.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -94,7 +97,7 @@ catch(IOException e)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1468, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,7 +123,7 @@ catch(IOException e)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1600, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1526, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

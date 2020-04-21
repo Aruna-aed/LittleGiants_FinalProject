@@ -199,7 +199,7 @@ public class Phase2JPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(refreshJButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 177, Short.MAX_VALUE)
+                        .addGap(0, 81, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1338, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -207,7 +207,7 @@ public class Phase2JPanel extends javax.swing.JPanel {
                                 .addGap(60, 60, 60)
                                 .addComponent(jButton2)
                                 .addGap(96, 96, 96)))))
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(616, 616, 616)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +231,7 @@ public class Phase2JPanel extends javax.swing.JPanel {
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(798, Short.MAX_VALUE))
+                .addContainerGap(756, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
