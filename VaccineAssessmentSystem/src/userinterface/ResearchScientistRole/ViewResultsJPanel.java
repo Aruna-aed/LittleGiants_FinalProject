@@ -42,6 +42,7 @@ public class ViewResultsJPanel extends javax.swing.JPanel {
     }
 public void populateTable(){
       DefaultTableModel model = (DefaultTableModel) ResultsJTable.getModel();
+      Enterprise e1=this.enterprise;
       model.setRowCount(0); 
       Object[] row = new Object[7];
        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
@@ -52,7 +53,9 @@ public void populateTable(){
                    -> (organization.getName().equals("Visitor Organization"))).forEachOrdered((organization) -> {
                
              for (Visitor v: organization.getVisitorDirectory().getVisitorList()) {
-                 
+                try{
+                 if(v.getSelectedBy().equals(e1.getName()))
+                 {
                  
                  Phase phase1 = v.searchPhase("Phase1");
                  Phase phase2 = v.searchPhase("Phase2");
@@ -89,7 +92,10 @@ public void populateTable(){
              }
              catch(Exception e){
                      
-                     }}
+                     }}}
+             catch(Exception e ){
+                 
+             }}
            });
           }}
           }
@@ -103,9 +109,8 @@ public void populateTable(){
         jScrollPane1 = new javax.swing.JScrollPane();
         ResultsJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        processJButton1 = new javax.swing.JButton();
 
-        processJButton.setText("View LineChart");
+        processJButton.setText("View graphs");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
@@ -144,13 +149,6 @@ public void populateTable(){
             }
         });
 
-        processJButton1.setText("View Piechart");
-        processJButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processJButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,9 +160,7 @@ public void populateTable(){
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(375, 375, 375)
-                        .addComponent(processJButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(processJButton1))
+                        .addComponent(processJButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -178,38 +174,62 @@ public void populateTable(){
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(processJButton)
-                    .addComponent(processJButton1))
+                .addComponent(processJButton)
                 .addGap(91, 91, 91))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
-public int getVolunteersCount(){
+    public int getFailedCount(){
  Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
-    int volunteerCount=0;
-    for (Network network : business.getNetworkList()) {
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise.getEnterpriseType() == type) {
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                    if (organization.getName().equals("Visitor Organization")) {
+ Enterprise e1=this.enterprise;
+  int failedCount=0;
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getEnterpriseType() == type) {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization.getName().equals("Visitor Organization")) {
 
-                        for (Visitor v : organization.getVisitorDirectory().getVisitorList()) {
-                            try {
-                                if (v.isVolunteer()==true) {
-                                    volunteerCount = volunteerCount + 1;
+                            for (Visitor v : organization.getVisitorDirectory().getVisitorList()) {
+                                try {
+                                    if (v.getResearchStatus().equals("failed") && v.isVolunteer() == true && v.getSelectedBy().equals(e1.getName())) {
+                                        failedCount = failedCount + 1;
+                                    }
+                                } catch (Exception e) {
                                 }
-                            } catch (Exception e) {
                             }
                         }
                     }
                 }
             }
+            
         }
-    }
-return volunteerCount;
-}
+        return failedCount;}
+    
+        public int getVolunteerCount(){
+ Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
+ Enterprise e1=this.enterprise;
+  int volunteerCount=0;
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getEnterpriseType() == type) {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization.getName().equals("Visitor Organization")) {
+
+                            for (Visitor v : organization.getVisitorDirectory().getVisitorList()) {
+                                try {
+                                    if ( v.isVolunteer() == true && v.getSelectedBy().equals(e1.getName())) {
+                                        volunteerCount = volunteerCount + 1;
+                                    }
+                                } catch (Exception e) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        return volunteerCount;}
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
 
@@ -366,15 +386,10 @@ return volunteerCount;
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void processJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_processJButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ResultsJTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
-    private javax.swing.JButton processJButton1;
     // End of variables declaration//GEN-END:variables
 }

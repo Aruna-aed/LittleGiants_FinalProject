@@ -25,8 +25,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="375" max="-2" attributes="0"/>
                       <Component id="processJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="processJButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -45,10 +43,7 @@
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="processJButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="processJButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="processJButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -57,7 +52,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="processJButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View LineChart"/>
+        <Property name="text" type="java.lang.String" value="View graphs"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="processJButtonActionPerformed"/>
@@ -135,14 +130,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="processJButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Piechart"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="processJButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
