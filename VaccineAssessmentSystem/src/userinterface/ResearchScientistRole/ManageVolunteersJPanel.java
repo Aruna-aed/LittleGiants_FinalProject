@@ -342,7 +342,13 @@ private void populateResearchAssistant(){
     if (enterprise.getEnterpriseType()==type) {
        enterprise.getOrganizationDirectory().getOrganizationList().stream().filter((organization) -> (organization.getName().equals("Visitor Organization"))).forEachOrdered((organization) -> {
             for (Visitor v: organization.getVisitorDirectory().getVisitorList()) {
-                if (v.isVolunteer()&&v.getAge()>minAge&&v.getAge()<maxAge) {
+                try{
+                    if (v.isVolunteer()&&v.getAge()>minAge&&v.getAge()<maxAge) {
+                        
+                    
+                        if(v.getSelectedBy().equals("")||v.getSelectedBy()==null)
+          {
+              
                     Object[] row = new Object[7];
                     row[0] = v;
                     row[1] = v.getAge();
@@ -352,7 +358,18 @@ private void populateResearchAssistant(){
                     row[5] = v.getCurrVital().getWeightKls();
                     row[6] = v.getCurrVital().getTemp();
                     model.addRow(row);
-                }
+                }}}
+                catch(Exception e){
+                    Object[] row = new Object[7];
+                    row[0] = v;
+                    row[1] = v.getAge();
+                    row[2] = v.getCurrVital().getRespiratoryRate();
+                    row[3] = v.getCurrVital().getHeartRate();
+                    row[4] = v.getCurrVital().getBp();
+                    row[5] = v.getCurrVital().getWeightKls();
+                    row[6] = v.getCurrVital().getTemp();
+                    model.addRow(row);
+                        }
             }
         });
      }

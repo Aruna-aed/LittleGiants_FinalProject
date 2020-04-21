@@ -7,9 +7,12 @@ package userinterface.ResearchScientistRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Visitor.Phase;
 import Business.Visitor.Visitor;
+import Business.WorkQueue.LabTestWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -38,7 +41,7 @@ public class ViewResultsJPanel extends javax.swing.JPanel {
      
     }
 public void populateTable(){
-      DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+      DefaultTableModel model = (DefaultTableModel) ResultsJTable.getModel();
       model.setRowCount(0); 
       Object[] row = new Object[7];
        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
@@ -98,7 +101,7 @@ public void populateTable(){
 
         processJButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        ResultsJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         processJButton.setText("View graphs");
@@ -108,7 +111,7 @@ public void populateTable(){
             }
         });
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        ResultsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -131,7 +134,7 @@ public void populateTable(){
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
+        jScrollPane1.setViewportView(ResultsJTable);
 
         jButton1.setText("back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -172,15 +175,21 @@ public void populateTable(){
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
 
-   int selectedRow = workRequestJTable.getSelectedRow();
+   int selectedRow = ResultsJTable.getSelectedRow();
 
         if (selectedRow < 0){
                   JOptionPane.showMessageDialog(null, "Please select a row.");
             return;
         }
 
-        Visitor visitor = (Visitor)workRequestJTable.getValueAt(selectedRow, 0);
-
+        Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
+        if(!(findRequest1() && findRequest2() && findRequest3() && findRequest4()) ){
+             JOptionPane.showMessageDialog(null, "All the requested antibodies reports have not been recieved yet.");
+            return;
+        }
+        
+        
+    
 /*
         ViewGraphsJPanel viewGraphsJPanel = new ViewGraphsJPanel(userProcessContainer,  visitor);
         userProcessContainer.add("viewGraphsJPanel", viewGraphsJPanel);
@@ -194,7 +203,125 @@ public void populateTable(){
       RefineryUtilities.centerFrameOnScreen( chart );
       chart.setVisible( true );
     }//GEN-LAST:event_processJButtonActionPerformed
-
+   public boolean findRequest1(){
+       
+   int selectedRow = ResultsJTable.getSelectedRow();
+        Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+   
+       for (Network network : business.getNetworkList()) {
+           for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+               if (enterprise.getEnterpriseType() == type) {
+                  for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+                  {
+                           if(organization.getName().equals("Screening Organization")) {
+                       for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+                           LabTestWorkRequest labTestWorkRequest = (LabTestWorkRequest) request;
+                           String testName1 = ((LabTestWorkRequest) request).getTestName();
+                           if (visitor.getName().equals(labTestWorkRequest.getPatientName())) {
+                               if (testName1.equals("Antibodies Test1")) {
+                                 try{
+                                     if(request.getStatus().equals("Completed"))
+                                   return true;
+                                 }
+                                 catch(Exception e){
+                                     
+                                 }
+                               }
+                           }
+                       }}}}}}
+  return false;
+   }
+   
+      public boolean findRequest2(){
+       
+   int selectedRow = ResultsJTable.getSelectedRow();
+        Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+   
+       for (Network network : business.getNetworkList()) {
+           for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+               if (enterprise.getEnterpriseType() == type) {
+                  for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+                  {
+                           if(organization.getName().equals("Screening Organization")) {
+                       for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+                           LabTestWorkRequest labTestWorkRequest = (LabTestWorkRequest) request;
+                           String testName1 = ((LabTestWorkRequest) request).getTestName();
+                           if (visitor.getName().equals(labTestWorkRequest.getPatientName())) {
+                               if (testName1.equals("Antibodies Test2")) {
+                                 try{
+                                     if(request.getStatus().equals("Completed"))
+                                   return true;
+                                 }
+                                 catch(Exception e){
+                                     
+                                 }
+                               }
+                           }
+                       }}}}}}
+  return false;
+   }
+      
+         public boolean findRequest3(){
+       
+   int selectedRow = ResultsJTable.getSelectedRow();
+        Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+   
+       for (Network network : business.getNetworkList()) {
+           for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+               if (enterprise.getEnterpriseType() == type) {
+                  for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+                  {
+                           if(organization.getName().equals("Screening Organization")) {
+                       for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+                           LabTestWorkRequest labTestWorkRequest = (LabTestWorkRequest) request;
+                           String testName1 = ((LabTestWorkRequest) request).getTestName();
+                           if (visitor.getName().equals(labTestWorkRequest.getPatientName())) {
+                               if (testName1.equals("Antibodies Test3")) {
+                                 try{
+                                     if(request.getStatus().equals("Completed"))
+                                   return true;
+                                 }
+                                 catch(Exception e){
+                                     
+                                 }
+                               }
+                           }
+                       }}}}}}
+  return false;
+   }
+         
+            public boolean findRequest4(){
+       
+   int selectedRow = ResultsJTable.getSelectedRow();
+        Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+   
+       for (Network network : business.getNetworkList()) {
+           for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+               if (enterprise.getEnterpriseType() == type) {
+                  for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+                  {
+                           if(organization.getName().equals("Screening Organization")) {
+                       for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+                           LabTestWorkRequest labTestWorkRequest = (LabTestWorkRequest) request;
+                           String testName1 = ((LabTestWorkRequest) request).getTestName();
+                           if (visitor.getName().equals(labTestWorkRequest.getPatientName())) {
+                               if (testName1.equals("Antibodies Test4")) {
+                                 try{
+                                     if(request.getStatus().equals("Completed"))
+                                   return true;
+                                 }
+                                 catch(Exception e){
+                                     
+                                 }
+                               }
+                           }
+                       }}}}}}
+  return false;
+   }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           userProcessContainer.remove(this);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
@@ -202,9 +329,9 @@ public void populateTable(){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable ResultsJTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
-    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

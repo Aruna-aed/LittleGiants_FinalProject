@@ -74,7 +74,7 @@ public class ResearchAssistantWorkAreaJPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 200, 160));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, 200, 160));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 204));
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -84,7 +84,7 @@ public class ResearchAssistantWorkAreaJPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 533, 210, 150));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 730, 210, 150));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -101,7 +101,7 @@ public class ResearchAssistantWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/Images/phases.gif"))); // NOI18N
         jPanel2.add(jLabel2);
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 820, 450));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 820, 480));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

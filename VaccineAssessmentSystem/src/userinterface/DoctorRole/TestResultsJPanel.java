@@ -500,7 +500,10 @@ void populateDropdownTestName(){
     }//GEN-LAST:event_yesBtnActionPerformed
 
     private void yesBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtn1ActionPerformed
-          /*      boolean eligible;
+      yesBtn1.setSelected(true);
+      noBtn1.setSelected(false);
+        
+        /*      boolean eligible;
                 eligible = yesBtn1.isSelected();
                 patient.setVolunteer(eligible);
                 
@@ -548,6 +551,8 @@ private void sendEmail(String emailAdd) {
         }
     private void noBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noBtn1ActionPerformed
         // TODO add your handling code here:
+        yesBtn1.setSelected(false);
+      noBtn1.setSelected(true);
         /*  boolean eligible;
                 eligible = yesBtn1.isSelected();
                 patient.setVolunteer(eligible);*/
