@@ -14,9 +14,14 @@ import Business.Visitor.Visitor;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Frame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.RefineryUtilities;
 
 /**
@@ -109,8 +114,9 @@ public void populateTable(){
         jScrollPane1 = new javax.swing.JScrollPane();
         ResultsJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        pieButton = new javax.swing.JButton();
 
-        processJButton.setText("View graphs");
+        processJButton.setText("View LineChart");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
@@ -149,6 +155,13 @@ public void populateTable(){
             }
         });
 
+        pieButton.setText("View PieChart");
+        pieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pieButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,12 +172,17 @@ public void populateTable(){
                         .addGap(39, 39, 39)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(375, 375, 375)
-                        .addComponent(processJButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(processJButton)))
                 .addGap(32, 32, 32))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(393, Short.MAX_VALUE)
+                    .addComponent(pieButton)
+                    .addGap(335, 335, 335)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,9 +191,14 @@ public void populateTable(){
                 .addComponent(jButton1)
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(44, 44, 44)
                 .addComponent(processJButton)
-                .addGap(91, 91, 91))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(242, Short.MAX_VALUE)
+                    .addComponent(pieButton)
+                    .addGap(81, 81, 81)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -386,10 +409,36 @@ public void populateTable(){
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void pieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pieButtonActionPerformed
+        // TODO add your handling code here:
+         Frame frame = new Frame();
+        int successCount=getVolunteerCount()-getFailedCount();
+        int failedCount=getFailedCount();
+        if(successCount==0 && failedCount==0)
+        {
+            JOptionPane.showMessageDialog(null, "No volunteers yet");
+            return;
+        }
+        DefaultPieDataset pieDataSet = new DefaultPieDataset();
+        pieDataSet.setValue("Volunteers Success Count", successCount);
+        pieDataSet.setValue("Volunteers Failure Count", failedCount);
+        JFreeChart chart = ChartFactory.createPieChart("Pie Chart", pieDataSet, true, true, true);
+
+        ChartPanel cpp = new ChartPanel(chart);
+        frame.add(cpp);
+
+        frame.pack();
+        frame.setVisible(true);
+        cpp.setSize(600, 600);
+        cpp.setVisible(true);
+        pieButton.setEnabled(false);
+    }//GEN-LAST:event_pieButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ResultsJTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton pieButton;
     private javax.swing.JButton processJButton;
     // End of variables declaration//GEN-END:variables
 }
