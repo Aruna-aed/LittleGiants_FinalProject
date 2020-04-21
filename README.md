@@ -1,16 +1,16 @@
-# final-project: Covid-19
-# Team name: sassyscripters
+# final-project: Vaccine Assessment System
+# Team name: Little Giants
 
 ### Problem Statement
-TODO: add problem statement
+The main intention of our application is to identify the people who are eligible for Covid-19 vaccine testing and to be able to track the efficiency of vaccine administered to the volunteers. The tracking will be done in different phases of vaccine administration and based on different parameters.
 
 ### Student Information
 | Name  | NUID |
 | ------------- | ------------- |
-| Abhinav Nagaraj  | 001341367   |
-| Aditi Jalkote  |  001404314  |
-| Anusha Peddigari  | 001023769  |
-| Palak  Mundra  |  001393220  |
+| Anusha Peddigari  | 001023769   |
+| Aruna Divi  |  001066149  |
+| Shiva Mahitha Maddi  |  001061161  |
+
 
 ### Technologies Used
 Project has two directories: one for UI (named webapp) and the other for backend (named server)
