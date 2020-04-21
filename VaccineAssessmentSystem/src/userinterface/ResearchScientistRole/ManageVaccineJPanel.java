@@ -67,8 +67,15 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
         }
     }
     
-    
+    public void removeAll(){
+    int itemCount = dose1.getItemCount();
+
+    for(int i=0;i<itemCount;i++){
+        dose1.removeItemAt(0);
+     }
+}
       public void populateDosesComboBox(){
+          removeAll();
    ResearchDepartmentEnterprise researchDepartmentEnterprise= (ResearchDepartmentEnterprise)enterprise;
    for(String dose:researchDepartmentEnterprise.getDosesList()){
        dose1.addItem(dose);}}
@@ -239,6 +246,11 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
         );
 
         dose1.setBackground(new java.awt.Color(88, 177, 159));
+        dose1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dose1ActionPerformed(evt);
+            }
+        });
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/Images/Volunteers-Needed.jpg"))); // NOI18N
 
@@ -261,7 +273,7 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,6 +364,14 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
+        ResearchDepartmentEnterprise  researchDepartmentEnterprise=(ResearchDepartmentEnterprise)enterprise;
+        int doselistSize= researchDepartmentEnterprise.getDosesList().size();
+    
+    if(doselistSize<4){
+        int remaining=4-doselistSize;
+          JOptionPane.showMessageDialog(null, "Please add atleast 4 doses. Remaining :"+ remaining);
+          return;
+    }
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         userProcessContainer.remove(this);
         layout.previous(userProcessContainer);
@@ -451,14 +471,14 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
                return;
         }
       //  ResearchDepartmentEnterprise  researchDepartmentEnterprise=(ResearchDepartmentEnterprise)enterprise;
-    int doselistSize= researchDepartmentEnterprise.getDosesList().size();
+    /*int doselistSize= researchDepartmentEnterprise.getDosesList().size();
     
     if(doselistSize<4){
         int remaining=4-doselistSize;
           JOptionPane.showMessageDialog(null, "Please add atleast 4 doses. Remaining :"+ remaining);
           return;
     }
-    
+    */
     
      int dialogButton=0;
         int dialogResult=JOptionPane.showConfirmDialog (null, "Vaccine attributes once saved cannot be changed."
@@ -513,6 +533,10 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
         populateDosesComboBox();
         
     }//GEN-LAST:event_DoseBtnActionPerformed
+
+    private void dose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dose1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dose1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
