@@ -103,8 +103,9 @@ public void populateTable(){
         jScrollPane1 = new javax.swing.JScrollPane();
         ResultsJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        processJButton1 = new javax.swing.JButton();
 
-        processJButton.setText("View graphs");
+        processJButton.setText("View LineChart");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
@@ -143,6 +144,13 @@ public void populateTable(){
             }
         });
 
+        processJButton1.setText("View Piechart");
+        processJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processJButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +162,9 @@ public void populateTable(){
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(375, 375, 375)
-                        .addComponent(processJButton))
+                        .addComponent(processJButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(processJButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -168,10 +178,38 @@ public void populateTable(){
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(processJButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(processJButton)
+                    .addComponent(processJButton1))
                 .addGap(91, 91, 91))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+
+public int getVolunteersCount(){
+ Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
+    int volunteerCount=0;
+    for (Network network : business.getNetworkList()) {
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getEnterpriseType() == type) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization.getName().equals("Visitor Organization")) {
+
+                        for (Visitor v : organization.getVisitorDirectory().getVisitorList()) {
+                            try {
+                                if (v.isVolunteer()==true) {
+                                    volunteerCount = volunteerCount + 1;
+                                }
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+return volunteerCount;
+}
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
 
@@ -328,10 +366,15 @@ public void populateTable(){
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void processJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_processJButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ResultsJTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
+    private javax.swing.JButton processJButton1;
     // End of variables declaration//GEN-END:variables
 }
