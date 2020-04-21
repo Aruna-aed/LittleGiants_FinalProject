@@ -511,7 +511,7 @@ void populateDropdownTestName(){
                 JOptionPane.showMessageDialog(null,"Volunteer informed!");*/
                 
     }//GEN-LAST:event_yesBtn1ActionPerformed
-private void sendEmail(String emailAdd) {
+private void sendEmail(String emailAdd, boolean eligible) {
             final String to = emailAdd;
             boolean sessionDebug=false;
             String from = "anushaaed@gmail.com"; 
@@ -534,9 +534,16 @@ private void sendEmail(String emailAdd) {
             message.setRecipient(Message.RecipientType.TO,new InternetAddress(to));  
             InternetAddress address;
             address = new InternetAddress(to);
+            if(eligible){
             message.setSubject("Accepted as Volunteer for Vaccine Assessment");  
             
-            message.setText("Hello "+patient.getName()+", Based on the different tests, you are identified as eligible for Vaccine Assessment Testing");  
+            message.setText("Hello "+patient.getName()+", Based on the different tests, you are identified as eligible for Vaccine Assessment Testing"); 
+            }
+            else if(!eligible){
+                 message.setSubject("Rejected as Volunteer for Vaccine Assessment");  
+            
+            message.setText("Hello "+patient.getName()+", Based on the different tests, you are identified as not eligible for Vaccine Assessment Testing"); 
+            }
             Transport transport = session.getTransport("smtp");
             transport.connect(host,user,pass);
             transport.sendMessage(message, message.getAllRecipients());
@@ -613,8 +620,9 @@ private void sendEmail(String emailAdd) {
                 eligible = yesBtn1.isSelected();
                 patient.setVolunteer(eligible);
                 patient.setStatus("Completed");
-                sendEmail(patient.getEmailAdd());
-                JOptionPane.showMessageDialog(null,"Volunteer informed!");
+                
+                sendEmail(patient.getEmailAdd(),eligible);
+                JOptionPane.showMessageDialog(null,"Email sent to volunteer");
         CardLayout layout = (CardLayout)rightPanel.getLayout();
         rightPanel.remove(this);
       layout.previous(rightPanel);
@@ -626,7 +634,9 @@ private void sendEmail(String emailAdd) {
             }
         }
        return;
-          }  
+        
+        
+    } 
          
     }//GEN-LAST:event_jButton3ActionPerformed
 
