@@ -32,6 +32,15 @@ public class ManageVolunteersJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private Organization researchScientistOrganization;
     private EcoSystem business;
+    
+     /**
+     * Creates new form ManageVolunteersJPanel
+     * @param userProcessContainer
+     * @param userAccount
+     * @param enterprise
+     * @param business
+     * @param researchScientistOrganization
+     */
  
     public ManageVolunteersJPanel(JPanel userProcessContainer, Enterprise enterprise,UserAccount userAccount,Organization researchScientistOrganization, EcoSystem business,String minAge,String maxAge,String numOfVolunteers) 
     {
@@ -223,6 +232,7 @@ public class ManageVolunteersJPanel extends javax.swing.JPanel {
         dose1.setBackground(new java.awt.Color(88, 177, 159));
 
         jButton2.setBackground(new java.awt.Color(88, 177, 159));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Assign doses to volunteer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,13 +272,13 @@ public class ManageVolunteersJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel16))
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(dose3, 0, 196, Short.MAX_VALUE)
-                                        .addComponent(dose1, 0, 196, Short.MAX_VALUE)
-                                        .addComponent(dose2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(dose4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(researchAssistant, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addComponent(dose3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dose1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dose2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dose4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(researchAssistant, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
