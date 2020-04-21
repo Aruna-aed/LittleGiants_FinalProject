@@ -340,15 +340,15 @@ public void populateTable(){
                         ){
                     phase.setPhaseStatus("success");
                     
-               // JOptionPane.showMessageDialog(null,"Request sent to lab successfully"); 
+                JOptionPane.showMessageDialog(null,"Request sent to lab successfully"); 
                 }
                 else if ((week1.getWeekStatus().equals("failure"))||(week2.getWeekStatus().equals("failure"))||(week3.getWeekStatus().equals("failure"))||(week3.getWeekStatus().equals("failure"))){
                     phase.setPhaseStatus("failure");
                     
-               // JOptionPane.showMessageDialog(null,"Request sent to lab successfully"); 
+                JOptionPane.showMessageDialog(null,"Request sent to lab successfully"); 
                 }
                 
-                JOptionPane.showMessageDialog(null,"Request sent to lab successfully");         
+                //JOptionPane.showMessageDialog(null,"Request sent to lab successfully");         
             }
           
        }

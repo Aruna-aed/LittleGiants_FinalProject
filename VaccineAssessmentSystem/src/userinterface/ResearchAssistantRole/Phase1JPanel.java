@@ -326,6 +326,7 @@ public class Phase1JPanel extends javax.swing.JPanel {
            
           if(o.getWorkQueue().searchRequest(name, "Antibodies Test1")) {
                   JOptionPane.showMessageDialog(null,"Antibodies test report has already been requested for this patient for phase1");
+                  phase.setPhaseStatus("success");
             return;
           }
            LabTestWorkRequest request = new LabTestWorkRequest();
@@ -348,15 +349,15 @@ public class Phase1JPanel extends javax.swing.JPanel {
                 if((week1.getWeekStatus().equals("success"))&&(week2.getWeekStatus().equals("success"))&&(week3.getWeekStatus().equals("success"))&&(week3.getWeekStatus().equals("success"))
                         ){
                     phase.setPhaseStatus("success");
-                      // JOptionPane.showMessageDialog(null,"Request sent to lab successfully");
+                       JOptionPane.showMessageDialog(null,"Request sent to lab successfully");
            
                 }
                 else if ((week1.getWeekStatus().equals("failure"))||(week2.getWeekStatus().equals("failure"))||(week3.getWeekStatus().equals("failure"))||(week3.getWeekStatus().equals("failure"))){
                     phase.setPhaseStatus("failure");
-                     //  JOptionPane.showMessageDialog(null,"Request sent to lab successfully");
+                      JOptionPane.showMessageDialog(null,"Request sent to lab successfully");
           
                 }
-                JOptionPane.showMessageDialog(null,"Request sent to lab successfully");         
+                //JOptionPane.showMessageDialog(null,"Request sent to lab successfully");         
             }
           
        }
