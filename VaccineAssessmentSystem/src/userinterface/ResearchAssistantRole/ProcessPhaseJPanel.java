@@ -24,6 +24,13 @@ public class ProcessPhaseJPanel extends javax.swing.JPanel {
    private Visitor visitor;
    private Phase phase;
     
+   /**
+     * Creates new form ProcessPhaseJPanel
+     * @param userProcessContainer
+     * @param visitor
+     * @param phase
+     * @param request
+     */
     public ProcessPhaseJPanel(JPanel userProcessContainer, ResearchAssistantWorkRequest request,Visitor visitor,Phase phase) {
         initComponents();
         this.userProcessContainer = userProcessContainer;

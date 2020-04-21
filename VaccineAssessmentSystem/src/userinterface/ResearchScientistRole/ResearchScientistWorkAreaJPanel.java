@@ -77,6 +77,7 @@ public class ResearchScientistWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(88, 177, 159));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Manage Vaccine Attributes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +87,7 @@ public class ResearchScientistWorkAreaJPanel extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(88, 177, 159));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Manage Volunteers");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +97,7 @@ public class ResearchScientistWorkAreaJPanel extends javax.swing.JPanel {
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 200, -1));
 
         jButton3.setBackground(new java.awt.Color(88, 177, 159));
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("View Results");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

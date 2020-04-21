@@ -24,7 +24,13 @@ public class ResearchAssistantWorkAreaJPanel extends javax.swing.JPanel {
     private ResearchAssistantOrganization researchAssistantOrganization;
     private Enterprise enterprise;
     
-   
+   /**
+     * Creates new form ManageVolunteersJPanel
+     * @param userProcessContainer
+     * @param account
+     * @param enterprise
+     * @param business
+     */
     public ResearchAssistantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise,EcoSystem business) {
         initComponents();
         this.enterprise=enterprise;

@@ -24,6 +24,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     /**
      *
      * Creates new form ManageNetworkJPanel
+     * @param userProcessContainer
+     * @param system
      */
     public ManageNetworkJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();

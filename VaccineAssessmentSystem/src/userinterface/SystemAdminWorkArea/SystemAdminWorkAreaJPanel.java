@@ -24,6 +24,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SystemAdminWorkAreaJPanel
+     * @param userProcessContainer
+     * @param ecosystem
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;

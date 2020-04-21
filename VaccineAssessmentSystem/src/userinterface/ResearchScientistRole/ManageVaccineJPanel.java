@@ -25,6 +25,15 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private Organization researchScientistOrganization;
     private EcoSystem business;
+    
+    /**
+     * Creates new form ManageVolunteersJPanel
+     * @param userProcessContainer
+     * @param userAccount
+     * @param enterprise
+     * @param business
+     * @param researchScientistOrganization
+     */
  
     public ManageVaccineJPanel(JPanel userProcessContainer, Enterprise enterprise,UserAccount userAccount,Organization researchScientistOrganization, EcoSystem business) 
     {
