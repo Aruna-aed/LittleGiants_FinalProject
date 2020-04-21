@@ -381,7 +381,8 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,"Please save vital signs before advising tests");
             return;
          }
-        
+ 
+         
         if(blood.isSelected()==false && diabetes.isSelected()==false && cholesterol.isSelected()==false && hepatitis.isSelected()==false && cancer.isSelected()==false){
             JOptionPane.showMessageDialog(null,"Please advice some test!");
             return;
@@ -596,7 +597,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
   //all fields should be filled
   
-  
+     
    
         if(bpTextField.equals("") || rrTextField.equals("") || tempTextField.equals("") || weightTextField.equals("") || pulseTextField.equals("")){
             JOptionPane.showMessageDialog(null, "Please fill all the details.");
@@ -714,6 +715,9 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         vs1.setWeightKls(weight);
             
         }
+        
+        
+     
         // if(v.isPatientNormal(v.getAge(), rr, pulse, bp, weight, temp)){
                
            JOptionPane.showMessageDialog(null,"Vital signs are saved");
@@ -724,11 +728,42 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
            JOptionPane.showMessageDialog(null,"Vital signs are saved and patient is abnormal..!");
                 
             }*/
+         
+         
+            
+        int bp3=patient.getCurrVital().getBp();
+        int rr3=patient.getCurrVital().getRespiratoryRate();
+        int pr3=patient.getCurrVital().getHeartRate();
+        int temp3=patient.getCurrVital().getTemp();
+        float weight3=patient.getCurrVital().getWeightKls();
+         
+         if(!patient.isPatientNormal(patient.getAge(),rr3,pr3,bp3, weight3,temp3))
+         {
+         JOptionPane.showMessageDialog(null,"This patient is not normal! Hence he is not eligible to be a volunteer.");
+            boolean eligible=false;
+                patient.setVolunteer(eligible);
+                patient.setStatus("Completed");
+                
+        CardLayout layout = (CardLayout)container.getLayout();
+        container.remove(this);
+      layout.previous(container);
+        Component[] comps = this.container.getComponents();
+        for(Component comp : comps){
+        if(comp instanceof DoctorWorkAreaJPanel){
+            DoctorWorkAreaJPanel doctorWorkAreaJPanel= (DoctorWorkAreaJPanel) comp;
+            doctorWorkAreaJPanel.populateTable();
+            }
+        }
+       return;
+    }
              bpTextField.setText("");
             rrTextField.setText("");
             tempTextField.setText("");
             weightTextField.setText("");
             pulseTextField.setText("");
+            
+     
+        
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void bloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodActionPerformed
