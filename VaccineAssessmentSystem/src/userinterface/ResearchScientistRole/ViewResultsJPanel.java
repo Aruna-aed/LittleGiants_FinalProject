@@ -35,7 +35,7 @@ public class ViewResultsJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private UserAccount userAccount;
     private Enterprise enterprise;
-    
+    public int successCountl;
     /**
      * Creates new form ViewResultsJPanel
      * @param userProcessContainer
@@ -49,9 +49,60 @@ public class ViewResultsJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
+        successCountl=0;
         populateTable();
+        populateTable1();
      
     }
+    public void populateTable1(){
+      DefaultTableModel model = (DefaultTableModel) FailureTable.getModel();
+      Enterprise e1=this.enterprise;
+      model.setRowCount(0); 
+      Object[] row = new Object[7];
+       Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Hospital;
+       for (Network network: business.getNetworkList()) {
+         for (Enterprise enterprise: network.getEnterpriseDirectory().getEnterpriseList()) {
+          if (enterprise.getEnterpriseType() == type) {
+           enterprise.getOrganizationDirectory().getOrganizationList().stream().filter((organization) 
+                   -> (organization.getName().equals("Visitor Organization"))).forEachOrdered((organization) -> {
+               
+             for (Visitor v: organization.getVisitorDirectory().getVisitorList()) {
+                try{
+                 if(v.getSelectedBy().equals(e1.getName()))
+                 {
+                 
+                 Phase phase1 = v.searchPhase("Phase1");
+                 Phase phase2 = v.searchPhase("Phase2");
+                 Phase phase3 = v.searchPhase("Phase3");
+                 Phase phase4 = v.searchPhase("Phase4");
+                  try
+          {
+                 if (v.getResearchStatus().equals("failed")) {
+
+               row[0] = v;
+               row[1]= v.getAge();
+               row[2]= phase1.getPhaseStatus();
+               row[3]= phase2.getPhaseStatus();
+               row[4]= phase3.getPhaseStatus();
+               row[5]= phase4.getPhaseStatus();
+               row[6] = "failed";  
+             
+               
+               model.addRow(row);
+              }
+                //model.addRow(row);
+             }
+             catch(Exception e){
+                     
+                     }}}
+             catch(Exception e ){
+                 
+             }}
+           });
+          }}
+          }
+         }
+    
 public void populateTable(){
       DefaultTableModel model = (DefaultTableModel) ResultsJTable.getModel();
       Enterprise e1=this.enterprise;
@@ -89,6 +140,7 @@ public void populateTable(){
                if((phase1.getPhaseStatus().equals("success"))&&(phase2.getPhaseStatus().equals("success"))&&(phase3.getPhaseStatus().equals("success"))&&
                        (phase4.getPhaseStatus().equals("success"))){
                   row[6] = "success";  
+                  successCountl++;
                }
                else{
                    if((phase1.getPhaseStatus().equals("failure"))||(phase2.getPhaseStatus().equals("failure"))||(phase3.getPhaseStatus().equals("failure"))||
@@ -122,8 +174,10 @@ public void populateTable(){
         ResultsJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         pieButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        FailureTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -170,6 +224,7 @@ public void populateTable(){
             }
         });
 
+        pieButton.setBackground(new java.awt.Color(88, 177, 159));
         pieButton.setText("View PieChart");
         pieButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,27 +232,37 @@ public void populateTable(){
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        FailureTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/Images/linechart.gif"))); // NOI18N
-        jLabel1.setText("jLabel1");
+            },
+            new String [] {
+                "Volunteer Name", "Age", "Phase1", "Phase2", "Phase3", "Phase4", "Result"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 794, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(108, 108, 108))
-        );
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        FailureTable.setSelectionBackground(new java.awt.Color(88, 177, 159));
+        jScrollPane2.setViewportView(FailureTable);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Failure Cases");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Success Cases");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -207,39 +272,40 @@ public void populateTable(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(456, 456, 456)
+                        .addComponent(processJButton)
+                        .addGap(35, 35, 35)
+                        .addComponent(pieButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(456, 456, 456)
-                        .addComponent(processJButton)))
-                .addGap(725, 725, 725))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(1212, Short.MAX_VALUE)
-                    .addComponent(pieButton)
-                    .addGap(335, 335, 335)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(746, 746, 746))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel3))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(processJButton)
-                .addGap(25, 25, 25)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(processJButton)
+                    .addComponent(pieButton))
+                .addGap(154, 154, 154)
+                .addComponent(jLabel2)
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(1422, Short.MAX_VALUE)
-                    .addComponent(pieButton)
-                    .addGap(81, 81, 81)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -305,7 +371,7 @@ public void populateTable(){
         }
 
         Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
-        if(!(findRequest1() && findRequest2() && findRequest3() && findRequest4()) ){
+        if(findRequest1()==false &&findRequest2()==false && findRequest3()==false && findRequest4()==false){
              JOptionPane.showMessageDialog(null, "All the requested antibodies reports have not been recieved yet.");
             return;
         }
@@ -329,7 +395,7 @@ public void populateTable(){
        
    int selectedRow = ResultsJTable.getSelectedRow();
         Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
-        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Laboratory;
    
        for (Network network : business.getNetworkList()) {
            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -359,7 +425,7 @@ public void populateTable(){
        
    int selectedRow = ResultsJTable.getSelectedRow();
         Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
-        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Laboratory;
    
        for (Network network : business.getNetworkList()) {
            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -389,7 +455,7 @@ public void populateTable(){
        
    int selectedRow = ResultsJTable.getSelectedRow();
         Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
-        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Laboratory;
    
        for (Network network : business.getNetworkList()) {
            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -419,7 +485,7 @@ public void populateTable(){
        
    int selectedRow = ResultsJTable.getSelectedRow();
         Visitor visitor = (Visitor)ResultsJTable.getValueAt(selectedRow, 0);
-        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.ResearchDepartment;
+        Enterprise.EnterpriseType type = Enterprise.EnterpriseType.Laboratory;
    
        for (Network network : business.getNetworkList()) {
            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -453,7 +519,7 @@ public void populateTable(){
     private void pieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pieButtonActionPerformed
         // TODO add your handling code here:
          Frame frame = new Frame();
-        int successCount=getVolunteerCount()-getFailedCount();
+        int successCount=successCountl;
         int failedCount=getFailedCount();
         if(successCount==0 && failedCount==0)
         {
@@ -476,11 +542,13 @@ public void populateTable(){
     }//GEN-LAST:event_pieButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable FailureTable;
     private javax.swing.JTable ResultsJTable;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton pieButton;
     private javax.swing.JButton processJButton;
     // End of variables declaration//GEN-END:variables
